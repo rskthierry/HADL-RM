@@ -4,8 +4,8 @@ import fr.univnantes.m2.Configuration.Composant;
 
 public abstract class Port extends InterfaceComposant{
 
-	public Port(Composant c) {
-		super(c);
+	public Port(String n, Composant c) {
+		super(n,c);
 	}
 
 }

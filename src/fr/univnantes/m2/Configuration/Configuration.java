@@ -29,10 +29,19 @@ public class Configuration extends Composant implements Observer{
 
 	public void addComposant(Composant c){
 		composants.add(c);
+		c.setConfiguration(this);
+	}
+	
+	public void removeComposant(Composant c){
+		composants.remove(c);
 	}
 	
 	public void addConnector(Connector c){
 		connectors.add(c);
+	}
+	
+	public void removeConnector(Connector c){
+		connectors.remove(c);
 	}
 	
 	public void addAttachment(Attachment a){

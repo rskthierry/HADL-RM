@@ -7,8 +7,8 @@ import fr.univnantes.m2.Configuration.Composant;
 
 public class ServiceInput extends Service implements Observer{
 
-	public ServiceInput(Composant c) {
-		super(c);
+	public ServiceInput(String n, Composant c) {
+		super(n, c);
 	}
 
 	public void usePort(PortInput p){
@@ -22,7 +22,7 @@ public class ServiceInput extends Service implements Observer{
 
 	@Override
 	public void exec(Object o) {
-		
+		System.out.println(name+ " has been called with :"+o );
 	}
 
 }

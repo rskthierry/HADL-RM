@@ -9,13 +9,18 @@ public class ServiceOutput extends Service{
 
 	protected List<PortOutput> portOutput;
 	
-	public ServiceOutput(Composant c) {
-		super(c);
+	public ServiceOutput(String n, Composant c) {
+		super(n, c);
 		portOutput = new ArrayList<>();
+	}
+	
+	public void usePort(PortOutput po){
+		portOutput.add(po);
 	}
 
 	@Override
 	public void exec(Object o){
+		System.out.println(name+ " has been called with :"+o );
 		send(o);
 	}
 	
