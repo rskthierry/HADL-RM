@@ -5,7 +5,7 @@ import fr.univnantes.m2.InterfaceComposant.PortOutput;
 
 public class AttachmentOutputFrom extends Attachment {
 	public AttachmentOutputFrom(PortOutput p, RoleFrom r) {
-		port=p.getName();
-		role=r.getName();
+		port=p;
+		role=r;
 	}
 }

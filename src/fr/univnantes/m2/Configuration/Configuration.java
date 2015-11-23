@@ -6,6 +6,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import fr.univnantes.m2.Connector.Connector;
+import fr.univnantes.m2.Connector.RoleFrom;
 import fr.univnantes.m2.Connector.RoleTo;
 import fr.univnantes.m2.InterfaceComposant.PortInput;
 import fr.univnantes.m2.InterfaceComposant.PortOutput;
@@ -60,24 +61,18 @@ public class Configuration extends Composant implements Observer{
 		if (ev.getSrc() instanceof PortOutput){
 			PortOutput p = (PortOutput) (ev.getSrc());
 			for (Attachment att : attachments){
-				if (att.getPort().equals(p.getName())){
-					for (Connector connec : connectors){
-						if (connec.getRoleFrom().getName().equals(att.getRole())){
-							connec.transmit(ev.getArg());
-						}
-					}
+				if (att.getPort().equals(p)){
+					RoleFrom rf = (RoleFrom) att.getRole();
+					rf.receive(ev.getArg());
 				}	
 			}
 		}
 		else if (ev.getSrc() instanceof RoleTo){
 			RoleTo r = (RoleTo) (ev.getSrc());
 			for (Attachment a : attachments){
-				if (a.getRole().equals(r.getName())){
-					for (Composant comp : composants){
-						PortInput p = (PortInput) (comp.getPortByName(a.getPort()));
-						if (p!=null)
-							p.receice(ev.getArg());
-					}
+				if (a.getRole().equals(r)){
+					PortInput p = (PortInput) a.getPort();
+					p.receice(ev.getArg());
 				}	
 			}
 		}
