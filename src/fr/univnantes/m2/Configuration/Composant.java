@@ -7,6 +7,7 @@ import java.util.Observer;
 
 import fr.univnantes.m2.InterfaceComposant.InterfaceComposant;
 import fr.univnantes.m2.InterfaceComposant.Port;
+import fr.univnantes.m2.InterfaceComposant.ServiceOutput;
 
 public class Composant extends Observable implements Observer{
 	protected String name;
@@ -14,7 +15,9 @@ public class Composant extends Observable implements Observer{
 	protected List<Property> properties;
 	protected List<TechnicalConstraint> constraints;
 	
-	List<InterfaceComposant> interfaceComposants;
+	protected List<InterfaceComposant> interfaceComposants;
+	
+	protected Configuration configuration;
 	
 	public List<InterfaceComposant> getInterfaceComposants() {
 		return interfaceComposants;
@@ -51,9 +54,21 @@ public class Composant extends Observable implements Observer{
 		interfaceComposants.add(i);
 	}
 
+	
+	public void setConfiguration(Configuration c){
+		if (configuration!=null)
+			configuration.removeComposant(this);
+		configuration=c;
+		deleteObservers();
+		addObserver(c);
+	}
+	
+	
 	@Override
 	public void update(Observable o, Object arg) {
+		System.out.println(name+ " has been called with :"+o);
 		EventInConfiguration e = new EventInConfiguration(o, arg);
+		setChanged();
 		notifyObservers(e);
 	}
 	
@@ -63,6 +78,14 @@ public class Composant extends Observable implements Observer{
 				return (Port) i;
 		}
 		return null;
+	}
+	
+	public void callService(String serviceName, Object data){
+		for (InterfaceComposant i : interfaceComposants){
+			if (i.getName().equals(serviceName)){
+				((ServiceOutput) i).exec(data);
+			}
+		}
 	}
 
 }

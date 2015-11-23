@@ -11,7 +11,8 @@ public abstract class InterfaceComposant extends Observable{
 		return name;
 	}
 
-	public InterfaceComposant(Composant c){
+	public InterfaceComposant(String n,Composant c){
+		name=n;
 		addObserver(c);
 	}
 	

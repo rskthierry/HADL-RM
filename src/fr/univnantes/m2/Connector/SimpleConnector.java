@@ -4,8 +4,8 @@ import fr.univnantes.m2.Configuration.EventInConfiguration;
 
 public class SimpleConnector extends Connector{
 
-	public SimpleConnector(RoleFrom rf, RoleTo rt) {
-		super(rf, rt);
+	public SimpleConnector(String n) {
+		super(n);
 	}
 
 	@Override
