@@ -12,7 +12,7 @@ public abstract class Connector extends Observable {
 	
 	public Connector(String n){
 		name=n;
-		roleFrom=new RoleFrom(n+"_roleFrom");
+		roleFrom=new RoleFrom(this, n+"_roleFrom");
 		roleTo=new RoleTo(n+"_roleTo");
 	}
 	
@@ -23,7 +23,6 @@ public abstract class Connector extends Observable {
 		deleteObservers();
 		addObserver(c);
 	}
-	
 
 	public RoleFrom getRoleFrom() {
 		return roleFrom;

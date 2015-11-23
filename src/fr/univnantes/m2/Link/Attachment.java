@@ -1,13 +1,17 @@
 package fr.univnantes.m2.Link;
 
-public abstract class Attachment extends Link{
-	protected String port, role;
+import fr.univnantes.m2.Connector.Role;
+import fr.univnantes.m2.InterfaceComposant.Port;
 
-	public String getPort() {
+public abstract class Attachment extends Link{
+	protected Port port;
+	protected Role role;
+
+	public Port getPort() {
 		return port;
 	}
 
-	public String getRole() {
+	public Role getRole() {
 		return role;
 	}
 }

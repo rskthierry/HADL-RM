@@ -5,7 +5,7 @@ import fr.univnantes.m2.InterfaceComposant.PortInput;
 
 public class AttachmentToInput extends Attachment{
 	public AttachmentToInput(PortInput p, RoleTo r) {
-		port=p.getName();
-		role=r.getName();
+		port=p;
+		role=r;
 	}
 }
