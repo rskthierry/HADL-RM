@@ -9,6 +9,7 @@ public class PortInput extends Port {
 	}
 	
 	public void receice(Object o){
+		this.setChanged();
 		notifyObservers(o);
 	}
 }
