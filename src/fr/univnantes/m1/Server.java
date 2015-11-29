@@ -36,8 +36,11 @@ public class Server extends Configuration{
 		addConnector(sc1);
 		addConnector(sc2);
 		
+		addAttachment(new AttachmentToInput((PortInput) cm.getPortByName("dbQueryPR"), sc1.getRoleTo()));
+		addAttachment(new AttachmentOutputFrom((PortOutput) cm.getPortByName("query_DPF"), sc1.getRoleFrom()));
+		
 		addAttachment(new AttachmentOutputFrom((PortOutput) cm.getPortByName("dbQueryPF"), sc2.getRoleFrom()));
-		addAttachment(new AttachmentToInput((PortInput) cm.getPortByName("query_DPF"), sc2.getRoleTo()));
+		addAttachment(new AttachmentToInput((PortInput) cm.getPortByName("query_DPR"), sc2.getRoleTo()));
 		
 		Database db = new Database();
 		addComposant(db);
@@ -47,6 +50,12 @@ public class Server extends Configuration{
 		addConnector(sc3);
 		addConnector(sc4);
 		
+		addAttachment(new AttachmentOutputFrom((PortOutput) cm.getPortByName("security_managementPF"), sc3.getRoleFrom()));
+		addAttachment(new AttachmentToInput((PortInput) cm.getPortByName("check_queryPR"), sc3.getRoleTo()));
+		
+		addAttachment(new AttachmentOutputFrom((PortOutput) cm.getPortByName("check_queryPF"), sc4.getRoleFrom()));
+		addAttachment(new AttachmentToInput((PortInput) cm.getPortByName("security_managementPR"), sc4.getRoleTo()));
+		
 		SecurityManager sm = new SecurityManager();
 		addComposant(sm);
 		
@@ -54,6 +63,12 @@ public class Server extends Configuration{
 		SimpleConnector sc6 = new SimpleConnector("ClearanceRequestB");
 		addConnector(sc5);
 		addConnector(sc6);
+		
+		addAttachment(new AttachmentOutputFrom((PortOutput) cm.getPortByName("security_authPF"), sc5.getRoleFrom()));
+		addAttachment(new AttachmentToInput((PortInput) cm.getPortByName("security_checkPR"), sc5.getRoleTo()));
+		
+		addAttachment(new AttachmentOutputFrom((PortOutput) cm.getPortByName("check_queryPF"), sc6.getRoleFrom()));
+		addAttachment(new AttachmentToInput((PortInput) cm.getPortByName("security_authPR"), sc6.getRoleTo()));
 	}
 
 }
