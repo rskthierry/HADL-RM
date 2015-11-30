@@ -1,13 +1,15 @@
 package fr.univnantes.m2.Link;
 
-public abstract class Binding {
-	protected String portComp, portConf;
+import fr.univnantes.m2.InterfaceComposant.Port;
 
-	public String getPortComposant() {
+public abstract class Binding {
+	protected Port portComp, portConf;
+
+	public Port getPortComposant() {
 		return portComp;
 	}
 
-	public String getPortConfiguration() {
+	public Port getPortConfiguration() {
 		return portConf;
 	}
 }

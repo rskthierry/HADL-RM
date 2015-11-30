@@ -10,10 +10,11 @@ public abstract class Connector extends Observable {
 	protected RoleTo roleTo;
 	protected Configuration configuration;
 	
-	public Connector(String n){
+	public Connector(String n, Configuration c){
 		name=n;
 		roleFrom=new RoleFrom(this, n+"_roleFrom");
 		roleTo=new RoleTo(n+"_roleTo");
+		setConfiguration(c);
 	}
 	
 	public void setConfiguration(Configuration c){

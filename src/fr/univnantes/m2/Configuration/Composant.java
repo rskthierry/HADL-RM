@@ -66,7 +66,7 @@ public class Composant extends Observable implements Observer{
 	
 	@Override
 	public void update(Observable o, Object arg) {
-		System.out.println(name+ " has been called with :"+o);
+		System.out.println(name+ " has been called with :"+o + " "+arg);
 		EventInConfiguration e = new EventInConfiguration(o, arg);
 		setChanged();
 		notifyObservers(e);

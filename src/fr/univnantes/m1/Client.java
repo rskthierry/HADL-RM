@@ -32,6 +32,6 @@ public class Client extends Composant {
 		
 		PortInput p = (PortInput) c.getPortByName("ReceiveResponsePort");
 		p.receice("test 2");
-		
+	
 	}
 }

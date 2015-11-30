@@ -14,4 +14,8 @@ public abstract class Attachment extends Link{
 	public Role getRole() {
 		return role;
 	}
+	
+	public String toString(){
+		return "port: "+port.getName() + ", role "+role.getName();
+	}
 }
